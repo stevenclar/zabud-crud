@@ -16,10 +16,12 @@ export const PRIVATE_ROUTES: Routes = [
       },
     ],
   },
-  // {
-  //   path: Path.Users,
-  //   canActivate: [AuthGuard],
-  //   children: [
-  //   ],
-  // },
+  {
+    path: Path.Users,
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('@app/pages/private/user/user.module').then(
+        (m) => m.UserModule,
+      ),
+  },
 ];
