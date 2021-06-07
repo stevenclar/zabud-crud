@@ -1,7 +1,12 @@
 <div class="container mx-auto px-4 sm:px-8 bg-gray-50 dark:bg-gray-800">
     <div class="py-8">
-        <div>
-            <h2 class="text-2xl">Users</h2>
+        <div class="space">
+            <h2 class="text-2xl">Usuarios</h2>
+            <button
+                class="inline-block h-12 px-6 py-3 font-semibold text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300 focus:ring-4 focus:ring-offset-gray-300 focus:outline-none"
+            >
+                Crear
+            </button>
         </div>
         <div class="my-2 flex sm:flex-row flex-col">
             <div class="flex flex-row mb-1 sm:mb-0">
@@ -31,7 +36,7 @@
                         </path>
                     </svg>
                 </span>
-                <input placeholder="Search"
+                <input placeholder="Buscar"
                     class="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 dark:bg-gray-600 focus:outline-none" />
             </div>
         </div>
@@ -50,11 +55,11 @@
                             </th>
                             <th
                                 class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 dark:bg-gray-500 text-left text-xs font-semibold uppercase tracking-wider">
-                                Email
+                                Correo electrónico
                             </th>
                             <th
                                 class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 dark:bg-gray-500 text-left text-xs font-semibold uppercase tracking-wider">
-                                Telefono
+                                Teléfono
                             </th>
                             <th
                                 class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 dark:bg-gray-500 text-left text-xs font-semibold uppercase tracking-wider">
@@ -69,7 +74,7 @@
                     <tbody>
                         <tr *ngFor="let user of users">
                             <td class="px-5 py-5 border-b border-gray-200 bg-white dark:bg-gray-600 text-sm">
-                                <p class="whitespace-no-wrap">{{user.username}}</p>
+                                <p class="whitespace-no-wrap">{{user.username | titlecase}}</p>
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white dark:bg-gray-600 text-sm">
                                 <p class="whitespace-no-wrap">{{user.name | titlecase}}</p>
@@ -81,7 +86,7 @@
                                 <p class="whitespace-no-wrap">{{user.phone}}</p>
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white dark:bg-gray-600 text-sm">
-                                <p class="whitespace-no-wrap">{{user.website | lowercase}}</p>
+                                <a class="whitespace-no-wrap" href={{user.website}} target="_blank">{{user.website | lowercase}}</a>
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white dark:bg-gray-600 text-sm">
                                 <button 
@@ -104,13 +109,13 @@
                             [disabled]="from <= 0"
                             (click)="prevPage()"
                             class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l">
-                            Prev
+                            Anterior
                         </button>
                         <button
                             [disabled]="to >= numberOfEntries"
                             (click)="nextPage()"
                             class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-r">
-                            Next
+                            Siguiente
                         </button>
                     </div>
                 </div>
