@@ -83,8 +83,9 @@
                                 <p class="whitespace-no-wrap">{{user.phone}}</p>
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white dark:bg-gray-600 text-sm">
-                                <a class="whitespace-no-wrap" href={{user.website}} target="_blank">{{user.website |
-                                    lowercase}}</a>
+                                <p class="whitespace-no-wrap">
+                                    {{user.website | lowercase}}
+                                </p>
                             </td>
                             <td class="flex px-5 py-5 border-b border-gray-200 bg-white dark:bg-gray-600 gap-3">
                                 <button (click)="openEditDialog(user)"

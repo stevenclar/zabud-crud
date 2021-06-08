@@ -57,6 +57,7 @@ export class UserComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(newUser => {
       newUser && this.userService.createUser(newUser)
         .subscribe((createdUser) => {
+          createdUser.id = 100
           this.users = [createdUser, ...this.users].slice(0, 5)
         })
     });
