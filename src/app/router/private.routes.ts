@@ -10,8 +10,8 @@ export const PRIVATE_ROUTES: Routes = [
       {
         path: Path.Dashboard,
         loadChildren: () =>
-          import('@app/pages/public/home/home.module').then(
-            (m) => m.HomeModule,
+          import('@app/pages/private/dashboard/dashboard.module').then(
+            (m) => m.DashboardModule,
           ),
       },
     ],

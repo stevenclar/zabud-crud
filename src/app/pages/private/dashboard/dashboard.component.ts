@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ThemeList, ThemeService } from '@app/@core/services/theme';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  theme = ThemeList;
+
+  constructor(private themeService: ThemeService) { }
 
   ngOnInit(): void {
+  }
+
+
+  onClickChangeTheme(theme: ThemeList): void {
+    this.themeService.setTheme(theme);
   }
 
 }
