@@ -4,6 +4,7 @@ import { mergeMap, filter, tap, toArray } from 'rxjs/operators';
 import { User, UserService } from './_services/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateDialogComponent } from './create-dialog/create-dialog.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-user',
@@ -74,6 +75,17 @@ export class UserComponent implements OnInit, OnDestroy {
         .subscribe((updatedUser) => {
           this.users = this.users.map(u => u.id === user.id? {...u, ...updatedUser} : u)
         })
+    });
+  }
+
+  openDeleteDialog(user: User): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '250px',
+      data: user
+    });
+
+    dialogRef.afterClosed().subscribe(userId => {
+      userId && this.removeUser(userId)
     });
   }
 
