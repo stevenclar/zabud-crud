@@ -4,7 +4,7 @@ import { UserComponent } from './user.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateDialogComponent } from './create-dialog/create-dialog.component';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    MatDialogModule,
+    MaterialModule,
     RouterModule.forChild([
       {
         path: '',

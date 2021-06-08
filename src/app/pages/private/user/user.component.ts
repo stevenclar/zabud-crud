@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { mergeMap, filter, tap, toArray } from 'rxjs/operators';
 import { User, UserService } from './_services/user.service';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { CreateDialogComponent } from './create-dialog/create-dialog.component';
 
 @Component({
@@ -31,19 +31,18 @@ export class UserComponent implements OnInit, OnDestroy {
     this.getUsers()
   }
 
-  getUsers () {
+  getUsers() {
     const users$ = this.userService.getUsers()
     const from = (this.page - 1) * this.userPerPage
     const to = this.page * this.userPerPage
     this.from = from <= 0 ? 0 : from
-    this.to = to > this.numberOfEntries? this.numberOfEntries : to
+    this.to = to > this.numberOfEntries ? this.numberOfEntries : to
     this.userSubscription = users$
       .pipe(
         tap(users => this.numberOfEntries = users.length),
         mergeMap(user => user),
-        filter((_, i) => i >= this.from && i < this.to ),
+        filter((_, i) => i >= this.from && i < this.to),
         toArray(),
-        tap(console.log),
       )
       .subscribe(users => {
         this.users = users
@@ -55,9 +54,25 @@ export class UserComponent implements OnInit, OnDestroy {
       width: '250px',
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log(result);
+    dialogRef.afterClosed().subscribe(newUser => {
+      newUser && this.userService.createUser(newUser)
+        .subscribe((createdUser) => {
+          this.users = [createdUser, ...this.users]
+        })
+    });
+  }
+
+  openEditDialog(user: User): void {
+    const dialogRef = this.dialog.open(CreateDialogComponent, {
+      width: '250px',
+      data: user
+    });
+
+    dialogRef.afterClosed().subscribe(newUser => {
+      newUser && this.userService.updateUser(newUser, user.id)
+        .subscribe((updatedUser) => {
+          this.users = this.users.map(u => u.id === user.id? {...u, ...updatedUser} : u)
+        })
     });
   }
 
@@ -68,12 +83,12 @@ export class UserComponent implements OnInit, OnDestroy {
       })
   }
 
-  nextPage () {
+  nextPage() {
     this.page += 1;
     this.getUsers()
   }
 
-  prevPage () {
+  prevPage() {
     this.page -= 1;
     this.getUsers()
   }
