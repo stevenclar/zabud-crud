@@ -1,6 +1,6 @@
 # Prueba Angular Zabud
 
-Aplicacion que permite hacer un crud de usuarios usando el servicio de [JSONPlaceholder](https://jsonplaceholder.typicode.com)
+Aplicacion que permite hacer un crud de usuarios usando el servicio de [JSONPlaceholder](https://jsonplaceholder.typicode.com) y desplegada en [ZabudCrud](https://stevenclar.github.io/zabud-crud)
 
 ## Comenzando 🚀
 
