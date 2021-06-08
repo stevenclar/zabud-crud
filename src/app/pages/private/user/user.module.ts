@@ -3,17 +3,19 @@ import { CommonModule } from '@angular/common';
 import { UserComponent } from './user.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-
+import { CreateDialogComponent } from './create-dialog/create-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
-    UserComponent
+    UserComponent,
+    CreateDialogComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    MatDialogModule,
     RouterModule.forChild([
       {
         path: '',
@@ -25,5 +27,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
       },
     ]),
   ],
+  entryComponents: [
+    CreateDialogComponent
+  ]
 })
 export class UserModule { }

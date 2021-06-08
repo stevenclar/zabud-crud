@@ -2,6 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { mergeMap, filter, tap, toArray } from 'rxjs/operators';
 import { User, UserService } from './_services/user.service';
+import {MatDialog} from '@angular/material/dialog';
+import { CreateDialogComponent } from './create-dialog/create-dialog.component';
 
 @Component({
   selector: 'app-user',
@@ -19,7 +21,8 @@ export class UserComponent implements OnInit, OnDestroy {
   to!: number
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -45,6 +48,17 @@ export class UserComponent implements OnInit, OnDestroy {
       .subscribe(users => {
         this.users = users
       })
+  }
+
+  openCreateDialog(): void {
+    const dialogRef = this.dialog.open(CreateDialogComponent, {
+      width: '250px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+    });
   }
 
   removeUser(userId: number) {
