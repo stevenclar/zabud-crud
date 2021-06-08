@@ -1,27 +1,48 @@
-# Crud
+# Prueba Angular Zabud
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.3.
+Aplicacion que permite hacer un crud de usuarios usando el servicio de [JSONPlaceholder](https://jsonplaceholder.typicode.com)
 
-## Development server
+## Comenzando 🚀
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Clonar el repositorio
+```
+git clone https://github.com/stevenclar/zabud-crud
+```
 
-## Code scaffolding
+### Pre-requisitos 📋
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Tener instalado node con version minima 12.14, npm, y angular cli
 
-## Build
+### Instalación 🔧
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```
+cd zabud-crud
+```
 
-## Running unit tests
+```
+npm i
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+ng serve -o
+```
+## Despliegue 📦
 
-## Running end-to-end tests
+_Se le ha integrado CI con github actions y github pages entonces cada que se hace push a main se actualiza la pagina_
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Construido con 🛠️
 
-## Further help
+* [Angular](https://angular.io/docs/) - El framework web usado
+* [Tailwind](https://tailwindcss.com/docs/) - Framework css
+* [Angular Material](https://material.angular.io/components/categories/) - Libreria de componentes
+* [RxJS](https://rxjs.dev/api/) - Librería Javascript de programación reactiv
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Autores ✒️
+
+* **Deivid Steven Gonzalez** - *Desarrollo del proyecto* - [stevenclar](https://github.com/stevenclar)
+## Expresiones de Gratitud 🎁
+
+* Muchas gracias Zabud por la oportunidad 🤓.
+
+---
+⌨️ con ❤️ por [StevenClar](https://github.com/stevenclar) 😊
